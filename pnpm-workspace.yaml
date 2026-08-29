@@ -1,2 +1,5 @@
 allowBuilds:
   unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@expo/env@2.4.3'
+  - expo-constants@57.0.16
