@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "wers-mah-money",
+    "name": "WersMahMoney",
     "slug": "wers-mah-money",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,6 +8,7 @@
     "scheme": "wersmahmoney",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.vincent.wersmahmoney",
       "icon": "./assets/expo.icon"
     },
     "android": {

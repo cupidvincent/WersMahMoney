@@ -29,6 +29,7 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const test = { name: 'WersMahMoney', amount: 123 };
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
