@@ -1,6 +1,9 @@
+import { CATEGORIES } from '@/constants/categories';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import TextInput from './TextInput';
+import DatePicker from './ui/DatePicker';
+import Select from './ui/Select';
+import TextInput from './ui/TextInput';
 
 const ExpenseForm = ({
   mode,
@@ -12,12 +15,12 @@ const ExpenseForm = ({
   const [values, setValues] = useState({
     title: '',
     amount: '',
-    category: '',
-    date: '',
+    category: 'Food',
+    date: new Date(),
     merchant: '',
   });
 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: string, value: string | Date) => {
     setValues((prevValues) => ({
       ...prevValues,
       [name]: value,
@@ -39,15 +42,15 @@ const ExpenseForm = ({
         value={values.amount}
         onChangeText={(value) => handleChange('amount', value)}
       />
-      <TextInput
-        placeholder="Category"
+
+      <Select
         value={values.category}
-        onChangeText={(value) => handleChange('category', value)}
+        onChange={(value) => handleChange('category', value)}
+        options={CATEGORIES}
       />
-      <TextInput
-        placeholder="Date"
+      <DatePicker
         value={values.date}
-        onChangeText={(value) => handleChange('date', value)}
+        onChange={(date) => handleChange('date', date)}
       />
       <TextInput
         placeholder="Merchant"
