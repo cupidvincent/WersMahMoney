@@ -4,14 +4,6 @@ import { DATA } from '@/constants/expenses';
 import { useRouter } from 'expo-router';
 import { FlatList, Pressable, Text, View } from 'react-native';
 
-type ItemProps = { title: string };
-
-const Item = ({ title }: ItemProps) => (
-  <ThemedView>
-    <Text>{title}</Text>
-  </ThemedView>
-);
-
 const List = () => {
   const router = useRouter();
   const handlePress = (item: (typeof DATA)[number]) => {

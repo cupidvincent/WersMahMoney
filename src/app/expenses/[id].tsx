@@ -5,7 +5,7 @@ import { Pressable, Text, View } from 'react-native';
 
 const ViewExpense = () => {
   const router = useRouter();
-  const { id } = useLocalSearchParams();
+  const { id } = useLocalSearchParams<{ id: string }>();
   const { title, amount } = DATA.find((item) => item.id === id) || {
     title: 'Not found',
     amount: 0,
