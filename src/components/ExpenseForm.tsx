@@ -1,5 +1,4 @@
 import { CATEGORIES } from '@/constants/categories';
-import { useState } from 'react';
 import { Text, View } from 'react-native';
 import DatePicker from './ui/DatePicker';
 import Select from './ui/Select';
@@ -8,25 +7,20 @@ import TextInput from './ui/TextInput';
 const ExpenseForm = ({
   mode,
   expenseId,
+  values,
+  onChange,
 }: {
   mode: 'add' | 'edit';
   expenseId?: string;
-}) => {
-  const [values, setValues] = useState({
-    title: '',
-    amount: '',
-    category: 'Food',
-    date: new Date(),
-    merchant: '',
-  });
-
-  const handleChange = (name: string, value: string | Date) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
+  values: {
+    title: string;
+    amount: number;
+    category: string;
+    date: Date;
+    merchant: string;
   };
-
+  onChange: (name: string, value: string | Date | number) => void;
+}) => {
   return (
     <View>
       <Text>ExpenseForm</Text>
@@ -34,28 +28,31 @@ const ExpenseForm = ({
       <TextInput
         placeholder="Title"
         value={values.title}
-        onChangeText={(value) => handleChange('title', value)}
+        onChangeText={(value) => onChange('title', value)}
       />
       <TextInput
         placeholder="Amount"
-        keyboardType="numeric"
-        value={values.amount}
-        onChangeText={(value) => handleChange('amount', value)}
+        inputMode="decimal"
+        value={values.amount.toString()}
+        onChangeText={(value) => {
+          const cleaned = value.replace(/[^0-9.]/g, '');
+          onChange('amount', parseFloat(cleaned) || 0);
+        }}
       />
 
       <Select
         value={values.category}
-        onChange={(value) => handleChange('category', value)}
+        onChange={(value) => onChange('category', value)}
         options={CATEGORIES}
       />
       <DatePicker
         value={values.date}
-        onChange={(date) => handleChange('date', date)}
+        onChange={(date) => onChange('date', date)}
       />
       <TextInput
         placeholder="Merchant"
         value={values.merchant}
-        onChangeText={(value) => handleChange('merchant', value)}
+        onChangeText={(value) => onChange('merchant', value)}
       />
     </View>
   );
