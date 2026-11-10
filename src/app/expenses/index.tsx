@@ -17,6 +17,7 @@ const List = () => {
     <View>
       <BackButton />
       <FlatList
+        // Render the sample expenses; newly submitted records are not connected to this list.
         data={DATA}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (

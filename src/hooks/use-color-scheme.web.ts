@@ -7,6 +7,7 @@ import { useColorScheme as useRNColorScheme } from 'react-native';
 export function useColorScheme() {
   const [hasHydrated, setHasHydrated] = useState(false);
 
+  // Use light mode for the server and first client render, then expose the device theme.
   useEffect(() => {
     setHasHydrated(true);
   }, []);

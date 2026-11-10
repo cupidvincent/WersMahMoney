@@ -6,6 +6,7 @@ import { Pressable, Text, View } from 'react-native';
 const ViewExpense = () => {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  // Match the route ID to a sample expense, using fallback text when no record matches.
   const { title, amount } = DATA.find((item) => item.id === id) || {
     title: 'Not found',
     amount: 0,

@@ -9,6 +9,7 @@ const EditExpense = () => {
     <View>
       <BackButton />
       <Text>EditExpense</Text>
+      {/* This edit screen is a scaffold: the form still requires values and onChange props. */}
       <ExpenseForm mode="edit" expenseId={id} />
     </View>
   );

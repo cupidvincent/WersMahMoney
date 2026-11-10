@@ -12,6 +12,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
 
   const handleChange = (_event: unknown, selectedDate?: Date) => {
     if (Platform.OS === 'android') {
+      // Close Android's date dialog after selection or dismissal.
       setShowPicker(false);
     }
 
@@ -26,6 +27,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
         <Text>{value.toLocaleDateString()}</Text>
       </Pressable>
 
+      {/* Mount the Android/iOS native picker after the date field is pressed. */}
       {showPicker && (
         <DateTimePicker value={value} mode="date" onChange={handleChange} />
       )}
